@@ -34,4 +34,6 @@ outputFiles/N128T0.446p13i6/restartInfo/ 	: MSIZE_DIR (Directory containing init
 outputFiles/128T.446p13j1-1/       : OUTPUT_DIR (Output Directory)
 outputFiles/weightFiles/128T.446p13i8-2c200k2.00e-04.dat     : weightFile
 VMD/N=4/			   : VMDdir
+1		: log configurations
+1000		: configurations log interval
 zig-zag		: initCoords (enter "zig-zag" for initial planar zig-zag) NOTE: This is overridden by CONFIGS_FILE if fileInput=1.
