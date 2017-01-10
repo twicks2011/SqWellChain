@@ -7,7 +7,7 @@ mkdir outputFiles/$1/restartInfo/
 mkdir outputFiles/$1/collated/
 
 mkdir outputFiles/$1/configs/
-for i in {0..11}
+for i in {0..16}
 do
     mkdir outputFiles/$1/configs/T$i/
     for j in {0..450}
