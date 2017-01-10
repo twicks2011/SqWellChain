@@ -1,0 +1,8 @@
+#Run the commands below to set-up an intial test run
+
+make
+cp -r folderStructure ../myResults
+cd ../myResults/
+sh createDirsConfig.sh 128T.446p13j1-1
+../SqWellChain/newParaTemp inputFiles/128T.446p13j1-1.dat 
+
