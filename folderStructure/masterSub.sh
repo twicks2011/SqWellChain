@@ -23,7 +23,7 @@ sleep $((${str: -1}*5))
 
 echo "Running on login01"
 date
-cd /panfs/panasas01.panfs.cluster/pmzrsg/newParaTemp 
+cd /panfs/panasas01.panfs.cluster/pmzrsg/ #newParaTemp 
 # edit above line to the correct working directory for your job
 newParaTemp inputFiles/<NAME>.dat >  <NAME>.out
 echo "waiting to end.."
