@@ -1,0 +1,30 @@
+====Test runs walk through====
+#Download from git hub
+git clone git@github.com:RichGraham/SqWellChain
+cd SqWellChain/
+make
+cd ..
+cp -r SqWellChain/folderStructure results
+cd results
+cp ../SqWellChain/newParaTemp ./
+emacs masterSub.sh &
+#Edit path to point to correct directory
+#Check project code is correct and then close emacs
+
+____N=5 test run____
+#Submitting
+./setupRun.sh N5Test 1
+qsub N5Test.sh 
+
+#Viewing/checking results
+doBoth.sh 0 7 inputFiles/N5Test.dat 0
+xmgrace outputFiles/N5Test/collated/FE_chain0.dat ../SqWellChain/BenchMarkRuns/N5Test_BenchMark.dat
+
+____N=10 test run____
+#Submitting
+./setupRun.sh N10Test1 1
+qsub N10Test1.sh 
+
+#Viewing/checking results
+doBoth.sh 0 15 inputFiles/N10Test1.dat 0
+xmgrace outputFiles/N10Test1/collated/FE_chain0.dat ../SqWellChain/BenchMarkRuns/N10Test_BenchMark.dat
