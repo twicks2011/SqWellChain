@@ -11,8 +11,8 @@
 # This send your output to the file P1.out rather than the standard filename
 #PBS -N  <NAME>
 # Sets the job name
-#PBS -P  HPCA-02061-PGR 
-# Sets the job project ( HPCA-00544-PGR = Tom;  HPCA-02061-PGR  = George)
+#PBS -P  HPCA-00544-PGR
+# Sets the job project ( HPCA-00544-PGR = Tom;  HPCA-02932-EFR  = Leeds FIC)
 # OPTIONS FOR PBS PRO ==============================================================
 # Here we just use Unix command to run our program
 
