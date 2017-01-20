@@ -1,15 +1,25 @@
+**************************************************************************
+* This assumes that you have https://github.com/RichGraham/SqWellScripts *
+* downloaded, built and working!!!                                       *
+**************************************************************************
+
+Lines with # are comments or general instructions
+Other lines are meant to be run from the command line
+
 ====Test runs walk through====
 #Download from git hub
 git clone git@github.com:RichGraham/SqWellChain
 cd SqWellChain/
+# Change to appropriate branch, if needed (e.g. git checkout beta-testing)
 make
 cd ..
 cp -r SqWellChain/folderStructure results
 cd results
 cp ../SqWellChain/newParaTemp ./
 emacs masterSub.sh &
-#Edit path to point to correct directory
-#Check project code is correct and then close emacs
+#Edit path to point to correct directory (line 26)
+#Check project code is correct 
+#Close emacs
 
 ____N=5 test run____
 #Submitting
@@ -29,5 +39,5 @@ qsub N10Test1.sh
 doBoth.sh 0 15 inputFiles/N10Test1.dat 0
 xmgrace outputFiles/N10Test1/collated/FE_chain0.dat ../SqWellChain/BenchMarkRuns/N10Test_BenchMark.dat
 
-____N=40 Run____
+____N=40 Run____ *** Do not run - not ready yet !!! ***********
 doBoth.sh 75 120 inputFiles/N40TestRun2-1.dat 0
