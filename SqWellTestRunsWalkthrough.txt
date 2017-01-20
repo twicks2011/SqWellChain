@@ -28,3 +28,6 @@ qsub N10Test1.sh
 #Viewing/checking results
 doBoth.sh 0 15 inputFiles/N10Test1.dat 0
 xmgrace outputFiles/N10Test1/collated/FE_chain0.dat ../SqWellChain/BenchMarkRuns/N10Test_BenchMark.dat
+
+____N=40 Run____
+doBoth.sh 75 120 inputFiles/N40TestRun2-1.dat 0
