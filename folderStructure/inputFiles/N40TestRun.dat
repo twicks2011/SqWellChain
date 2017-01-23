@@ -2,7 +2,7 @@
 1.05	: LAMBDA
 3  	: TEMP_INTEREST 	
 12	: NUM_TEMPS
-inputFiles/temps/T0.4p12.dat	: TEMPS_FILE (File containing temperature profile)
+inputFiles/temps/T0.4p12b.dat	: TEMPS_FILE (File containing temperature profile)
 0	: fileInput (0=Off (planar zig-zag), 1=On)
 EXAMPLES/configsEXAMPLE.dat	: CONFIGS_FILE (File containing initial configs)
 EXAMPLES/moveSizesEXAMPLE/	: MSIZE_DIR (Directory containing initial move sizes)
@@ -23,7 +23,7 @@ EXAMPLES/moveSizesEXAMPLE/	: MSIZE_DIR (Directory containing initial move sizes)
 1.0e+04	    : PHI_UPDATE_INTERVAL
 10.0     : UPDATE_INTERVAL (number of swap intervals) (update biasing functon)
 5e+05      	    : SWAP_INTERVAL (attempt chain swap)
-50	    : NUM_SWAPS
+70	    : NUM_SWAPS
 1.0e+10	    : NUM_SWAP_INTERVALS
 1.0e+07	    : RESET_INTERVAL
 0.1    : SMALL_ANGLE_MOVES
@@ -32,6 +32,6 @@ EXAMPLES/moveSizesEXAMPLE/	: MSIZE_DIR (Directory containing initial move sizes)
 0.1		: END_ROT_MOVES
 0.1		: END_BRIDGE_MOVES
 outputFiles/N40TestRun/       : OUTPUT_DIR (Output Directory)
-outputFiles/weightFiles/N40T0.4s4.dat        : weightFile
+outputFiles/weightFiles/N40Testc75k3.56e-04.dat        : weightFile
 VMD/N=4/			   : VMDdir
 zig-zag		: initCoords (enter "zig-zag" for initial planar zig-zag) NOTE: This is overridden by CONFIGS_FILE if fileInput=1.
