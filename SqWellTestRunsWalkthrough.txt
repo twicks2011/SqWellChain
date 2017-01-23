@@ -21,7 +21,7 @@ emacs masterSub.sh &
 #Check project code is correct 
 #Close emacs
 
-____N=5 test run____ (Should converge within a few mins on a single processor)
+____N=5 test run (single processor)____ (Should converge within a few mins on a single processor)
 #Submitting
 ./setupRun.sh N5Test 1
 qsub N5Test.sh 
@@ -30,7 +30,7 @@ qsub N5Test.sh
 doBoth.sh 0 7 inputFiles/N5Test.dat 0
 xmgrace outputFiles/N5Test/collated/FE_chain0.dat ../SqWellChain/BenchMarkRuns/N5Test_BenchMark.dat
 
-____N=10 test run____ (Should converge within a few 10s of mins on a single processor)
+____N=10 test run (single processor)____ (Should converge within a few 10s of mins on a single processor)
 #Submitting
 ./setupRun.sh N10Test1 1
 qsub N10Test1.sh 
@@ -39,5 +39,10 @@ qsub N10Test1.sh
 doBoth.sh 0 15 inputFiles/N10Test1.dat 0
 xmgrace outputFiles/N10Test1/collated/FE_chain0.dat ../SqWellChain/BenchMarkRuns/N10Test_BenchMark.dat
 
-____N=40 Run____ *** Do not run - not ready yet !!! ***********
+____N=40 Run (12 processors)____ *** Do not run - not ready yet !!! ***********
+#Submitting
+./setupRun.sh N40TestRun 12
+qsub N40TestRun.sh 
+
+#Viewing/checking results
 doBoth.sh 75 120 inputFiles/N40TestRun2-1.dat 0
