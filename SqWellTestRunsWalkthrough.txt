@@ -23,12 +23,12 @@ emacs masterSub.sh &
 
 ____N=5 test run (single processor)____ (Should converge within a few mins on a single processor)
 #Submitting
-./setupRun.sh N5Test 1
-qsub N5Test.sh 
+./setupRun.sh N5Test1 1
+qsub N5Test1.sh 
 
 #Viewing/checking results
-doBoth.sh 0 7 inputFiles/N5Test.dat 0
-xmgrace outputFiles/N5Test/collated/FE_chain0.dat ../SqWellChain/BenchMarkRuns/N5Test_BenchMark.dat
+doBoth.sh 0 7 inputFiles/N5Test1.dat 0
+xmgrace outputFiles/N5Test1/collated/FE_chain0.dat ../SqWellChain/BenchMarkRuns/N5Test_BenchMark.dat
 
 ____N=10 test run (single processor)____ (Should converge within a few 10s of mins on a single processor)
 #Submitting
@@ -41,19 +41,19 @@ xmgrace outputFiles/N10Test1/collated/FE_chain0.dat ../SqWellChain/BenchMarkRuns
 
 ____N=40 Run (12 processors)____ 
 #Submitting
-./setupRun.sh N40TestRun 12
-qsub N40TestRun.sh 
+./setupRun.sh N40TestRun1 12
+qsub N40TestRun1.sh 
 
 #Viewing/checking results
-doBoth.sh 75 120 inputFiles/N40TestRun.dat 0
-xmgrace outputFiles/N40TestRun/collated/FE_chain3.dat ../SqWellChain/BenchMarkRuns/N40Test_BenchMark.dat
+doBoth.sh 75 120 inputFiles/N40TestRun1.dat 0
+xmgrace outputFiles/N40TestRun1/collated/FE_chain3.dat ../SqWellChain/BenchMarkRuns/N40Test_BenchMark.dat
 
 
 ____N=70 Run (12 processors)____ ******* Not checked yet!! ****
 #Submitting
-./setupRun.sh N40TestRun 12
-qsub N40TestRun.sh 
+./setupRun.sh N70TestRun2_1 12
+qsub N70TestRun2_1.sh 
 
 #Viewing/checking results
-doBoth.sh 75 120 inputFiles/N40TestRun.dat 0
+doBoth.sh 125 250 inputFiles/N40TestRun.dat 0
 
