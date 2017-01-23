@@ -39,10 +39,21 @@ qsub N10Test1.sh
 doBoth.sh 0 15 inputFiles/N10Test1.dat 0
 xmgrace outputFiles/N10Test1/collated/FE_chain0.dat ../SqWellChain/BenchMarkRuns/N10Test_BenchMark.dat
 
-____N=40 Run (12 processors)____ *** Do not run - not ready yet !!! ***********
+____N=40 Run (12 processors)____ 
 #Submitting
 ./setupRun.sh N40TestRun 12
 qsub N40TestRun.sh 
 
 #Viewing/checking results
-doBoth.sh 75 120 inputFiles/N40TestRun2-1.dat 0
+doBoth.sh 75 120 inputFiles/N40TestRun.dat 0
+xmgrace outputFiles/N40TestRun/collated/FE_chain3.dat ../SqWellChain/BenchMarkRuns/N40Test_BenchMark.dat
+
+
+____N=70 Run (12 processors)____ ******* Not checked yet!! ****
+#Submitting
+./setupRun.sh N40TestRun 12
+qsub N40TestRun.sh 
+
+#Viewing/checking results
+doBoth.sh 75 120 inputFiles/N40TestRun.dat 0
+
