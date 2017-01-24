@@ -31,7 +31,9 @@ EXAMPLES/moveSizesEXAMPLE/	: MSIZE_DIR (Directory containing initial move sizes)
 0.6     : CRANK_MOVES
 0.1		: END_ROT_MOVES
 0.1		: END_BRIDGE_MOVES
-outputFiles/N40TestRun/       : OUTPUT_DIR (Output Directory)
+outputFiles/N40TestRun1/       : OUTPUT_DIR (Output Directory)
 outputFiles/weightFiles/N40Testc75k3.56e-04.dat        : weightFile
 VMD/N=4/			   : VMDdir
+0		: log configurations
+1000		: configurations log interval
 zig-zag		: initCoords (enter "zig-zag" for initial planar zig-zag) NOTE: This is overridden by CONFIGS_FILE if fileInput=1.
