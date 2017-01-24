@@ -24,7 +24,7 @@ EXAMPLES/moveSizesEXAMPLE/	: MSIZE_DIR (Directory containing initial move sizes)
 10.0     : UPDATE_INTERVAL (number of swap intervals) (update biasing functon)
 5e+05      	    : SWAP_INTERVAL (attempt chain swap)
 70	    : NUM_SWAPS
-1.0e+10	    : NUM_SWAP_INTERVALS
+2.0e+4	    : NUM_SWAP_INTERVALS
 1.0e+07	    : RESET_INTERVAL
 0.1    : SMALL_ANGLE_MOVES
 0.1    : REPTATION_MOVES
