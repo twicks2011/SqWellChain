@@ -49,11 +49,11 @@ doBoth.sh 75 120 inputFiles/N40TestRun1.dat 0
 xmgrace outputFiles/N40TestRun1/collated/FE_chain3.dat ../SqWellChain/BenchMarkRuns/N40Test_BenchMark.dat
 
 
-____N=70 Run (12 processors)____ ******* Not checked yet!! ****
+____N=70 Run (12 processors)____ (Needs about 1 week to converge from a single run)
 #Submitting
 ./setupRun.sh N70TestRun2_1 12
 qsub N70TestRun2_1.sh 
 
 #Viewing/checking results
-doBoth.sh 125 250 inputFiles/N40TestRun.dat 0
-
+doBoth.sh 125 250 inputFiles/N70TestRun2_1.dat 0
+xmgrace outputFiles/N70TestRun2_1/collated/FE_chain3.dat ../SqWellChain/BenchMarkRuns/N70Test_BenchMark.dat
