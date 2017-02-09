@@ -34,4 +34,6 @@ EXAMPLES/moveSizesEXAMPLE/	: MSIZE_DIR (Directory containing initial move sizes)
 outputFiles/N5Test1/       : OUTPUT_DIR (Output Directory)
 outputFiles/weightFiles/N5TestRun.dat        : weightFile
 VMD/N=4/			   : VMDdir
+0		: log configurations
+1000		: configurations log interva
 zig-zag		: initCoords (enter "zig-zag" for initial planar zig-zag) NOTE: This is overridden by CONFIGS_FILE if fileInput=1.

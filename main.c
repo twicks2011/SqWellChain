@@ -63,7 +63,9 @@ int main(int argc, char *argv[])
   char outputDir[100];
   char weightFile[100];
   char VMDdir[100];
-  char initCoords[100];  
+  char initCoords[100];
+  int configLogging;
+  int configLogInterval;
   
 
   FILE *inputPtr;
@@ -155,6 +157,10 @@ int main(int argc, char *argv[])
   fgets(buffer, 100, inputPtr);
   fscanf(inputPtr, "%s\n",VMDdir);
   fgets(buffer, 100, inputPtr);
+  fscanf(inputPtr, "%d\n",&configLogging);
+  fgets(buffer, 100, inputPtr);
+  fscanf(inputPtr, "%d\n",&configLogInterval);
+  fgets(buffer, 100, inputPtr);
   fscanf(inputPtr, "%s\n",initCoords);
   fgets(buffer, 100, inputPtr);
   fclose(inputPtr);
@@ -241,6 +247,8 @@ int main(int argc, char *argv[])
   printf("Output Directory: %s\n", outputDir);
   printf("weightFile: %s\n", weightFile);
   printf("initCoords File: %s\n", initCoords);
+  printf("configLogging: %d\n", configLogging);
+  printf("configLogInterval: %d\n", configLogInterval);
 
   //int STATES = N+1;
   int STATES = 1000;
@@ -468,6 +476,8 @@ int main(int argc, char *argv[])
   double avEtotal[1000], avE_LJcryst[1000], avE_LJnonCryst[1000], avTorsionPrint[1000];
   double EtotalSum[1000], E_LJcrystSum[1000], E_LJnonCrystSum[1000], torsionPrintSum[1000];
 
+  int configPrintCount[20][500]={0};
+
   long int upwardMovesAttempted[20][1000]={0};
   long int upwardMovesAccepted[20][1000]={0};
 
@@ -490,7 +500,7 @@ int main(int argc, char *argv[])
   do{
 #pragma omp parallel    									\
       default(none)							\
-  shared(weightSum,upwardMovesAttempted,upwardMovesAccepted,swapCount,kappa,printed,randBuffer,seed,firstParse,rept,crossingCount,reptZero,update, occWeighted,Nmin,Nmax,PRINT_INTERVAL,PHI_UPDATE_INTERVAL,UPDATE_INTERVAL,ALPHA,BETA,GAMMA,sigma,stretchStart,stretchFinish,SMALL_ANGLE_MOVES,REPTATION_MOVES,CRANK_MOVES,END_ROT_MOVES,END_BRIDGE_MOVES,SWAP_INTERVAL,SWAP_ATTEMPTS,NUM_TEMPS,TEMPS,STATES,N,LAMBDA,LAMBDA_SQ,x_all,bondAngles_all,torsionAngles_all,phiMax,crankMax,endMax,weight,Eswap,outputDir,VMDdir,bestEtotal,worstEtotal,bestE_LJcryst,worstE_LJcryst,bestE_LJnonCryst,worstE_LJnonCryst,bestTorsionPrint,worstTorsionPrint,bestE_totalPrint,worstE_totalPrint,accSmlAngleMoves,accSmlAngleMovesA,accBigAngleMoves,accBigAngleMovesA,accReptMoves,accReptMovesA,accCrankMoves,accCrankMovesA,accEndRotMoves,accEndRotMovesA,accEndBrMoves,accEndBrMovesA, equilibrated,avEtotal,avE_LJcryst,avE_LJnonCryst,avTorsionPrint,EtotalSum,E_LJcrystSum,E_LJnonCrystSum,torsionPrintSum) \
+  shared(weightSum,upwardMovesAttempted,upwardMovesAccepted,swapCount,kappa,printed,randBuffer,seed,firstParse,rept,crossingCount,reptZero,update, occWeighted,Nmin,Nmax,PRINT_INTERVAL,PHI_UPDATE_INTERVAL,UPDATE_INTERVAL,ALPHA,BETA,GAMMA,sigma,stretchStart,stretchFinish,SMALL_ANGLE_MOVES,REPTATION_MOVES,CRANK_MOVES,END_ROT_MOVES,END_BRIDGE_MOVES,SWAP_INTERVAL,SWAP_ATTEMPTS,NUM_TEMPS,TEMPS,STATES,N,LAMBDA,LAMBDA_SQ,x_all,bondAngles_all,torsionAngles_all,phiMax,crankMax,endMax,weight,Eswap,outputDir,VMDdir,bestEtotal,worstEtotal,bestE_LJcryst,worstE_LJcryst,bestE_LJnonCryst,worstE_LJnonCryst,bestTorsionPrint,worstTorsionPrint,bestE_totalPrint,worstE_totalPrint,accSmlAngleMoves,accSmlAngleMovesA,accBigAngleMoves,accBigAngleMovesA,accReptMoves,accReptMovesA,accCrankMoves,accCrankMovesA,accEndRotMoves,accEndRotMovesA,accEndBrMoves,accEndBrMovesA, equilibrated,avEtotal,avE_LJcryst,avE_LJnonCryst,avTorsionPrint,EtotalSum,E_LJcrystSum,E_LJnonCrystSum,torsionPrintSum,configPrintCount,configLogging,configLogInterval) \
   private(i,j,k,occBiasedOutputFile,freeEnergyOutputFile,random_number)	\
   firstprivate(occUnbiased,freeEnergy) 
     {
@@ -544,7 +554,11 @@ int main(int argc, char *argv[])
       
       FILE *configPtr;     
       FILE *moveAttemptsPtr;
-      char moveAttemptsFile[100];    
+      char moveAttemptsFile[100];
+
+      FILE *configOPPtr;
+      char configOPFile[100];
+      
 
       if(firstParse[chain] == 1){
 	sprintf(crossingOutputFile,"%scrossings_chain%d.dat",outputDir,chain);
@@ -909,6 +923,18 @@ int main(int argc, char *argv[])
         x[cmpt][i] = x_old[cmpt][i];
     }
   }
+	if(configLogging==1){
+	  //Output the current configuration for constructing SN distribution	
+	  if(step%configLogInterval==0){
+	    configPrintCount[chain][N_crystalOld]++;
+	    sprintf(configOPFile,"%sconfigs/T%d/E%d/%d.dat",outputDir,chain,N_crystalOld,configPrintCount[chain][N_crystalOld]);
+	    configOPPtr=fopen(configOPFile,"w");
+	    for(i=0;i<N;i++)
+	      fprintf(configOPPtr,"%f %f %f\n",x[0][i],x[1][i],x[2][i]);
+	    fclose(configOPPtr);
+	  }
+	}
+
 	
 	
   if(accepted ==1 && newE_sw>0.0){
