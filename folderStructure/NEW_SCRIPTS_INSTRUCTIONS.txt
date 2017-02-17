@@ -1,0 +1,11 @@
+****Instructions for using the scripts for creating/updating conditional probability distributions***
+
+The new scripts are "updateConfigDist.c", with its executable "updateConfigDist" and "resetNames.sh". Copy these scripts either to ~/bin or to the working directory where you intend to use them.
+
+The script "updateConfigDist.c" takes a list of configuration files as input, then updates a distribution of Steinhardt-Nelson order parameters. 
+
+If "configuration.dat" does not already exist within the current working directory, it will be created.
+
+Once a configuration file has been used to update a distribution, its file name is prefixed with "DONE".
+
+To reset the filenames, run "resetNames.sh" in the working directory. 
